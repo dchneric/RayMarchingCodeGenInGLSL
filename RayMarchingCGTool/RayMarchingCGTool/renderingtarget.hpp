@@ -118,7 +118,16 @@ private:
 	GLuint fTextureText;
 
 	// 用String和FontSize做索引，todo:和字体绑定
-	std::unordered_map<std::pair<std::wstring, int>, std::pair<std::unique_ptr<unsigned char>, Rec> > glyphCache;
+    struct pairhash {
+    public:
+        template <typename T, typename U>
+        std::size_t operator()(const std::pair<T, U> &x) const
+        {
+            return std::hash<T>()(x.first) ^ std::hash<U>()(x.second);
+        }
+    };
+
+	std::unordered_map<std::pair<std::wstring, int>, std::pair<std::unique_ptr<unsigned char>, Rec>, pairhash > glyphCache;
 };
 
 

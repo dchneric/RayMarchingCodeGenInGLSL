@@ -172,3 +172,8 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# VS folders and files
+.vs/
+*.VC.db
+*.VC.opendb

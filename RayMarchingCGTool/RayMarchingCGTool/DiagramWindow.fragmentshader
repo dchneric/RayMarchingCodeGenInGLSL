@@ -22,10 +22,10 @@ void main(){
 		color = drawColor;
 	} else if (shaderType == 1) {
 		// emulate alpha testing, discard non-1.0's
-		if (texture2D( myTextureSampler, UV ).r < 0.50) {
+		if (texture( myTextureSampler, UV ).r < 0.50) {
 			discard;
 		}
 		// Output color = color of the texture at the specified UV
-		color = texture2D( myTextureSampler, UV ).r * drawColor;
+		color = texture( myTextureSampler, UV ).r * drawColor;
 	}
 }
